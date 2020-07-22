@@ -1,24 +1,39 @@
-# README
+Just Car API 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Simple running instruction until docker files will be ready
 
-Things you may want to cover:
+1. Set all required environmental variables the way you prefer. For example you can copy then edit .env using .env.example
 
-* Ruby version
+    ``` cp .env.example .env ```
 
-* System dependencies
+2. Setup connection for postgres. You can copy then edit config/database.yml using config/database.yml.example
 
-* Configuration
+   ``` cp config/database.yml.example cp config/database.yml ```
 
-* Database creation
+3. Run application server
 
-* Database initialization
+    ``` rails s```
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+## Other commands useful during development
 
-* Deployment instructions
+1. Run specs
 
-* ...
+    ``` rspec ```
+
+2. Run specs with code coverage
+
+    ``` COVERAGE=true rspec ```
+    ``` open tmp/reports/coverage/index.html ```
+
+3. Launch console if needed
+
+    ``` rails c ```
+
+4. Check new code with cops during development
+
+    ``` pronto run -r=flay rails_best_practices reek rubocop brakeman -c origin/develop ```
+
+5. Run pronto with cops on whole code like
+
+    ```pronto run --commit=$(git log --pretty=format:%H | tail -1)```
