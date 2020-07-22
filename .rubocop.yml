@@ -1,0 +1,98 @@
+require:
+  - rubocop-rspec
+
+AllCops:
+  Exclude:
+    - db/schema.rb
+    - db/migrate/*
+
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*
+
+RSpec/NestedGroups:
+  Max: 4
+
+Metrics/ParameterLists:
+  Max: 6
+
+RSpec/DescribeClass:
+  Exclude:
+    - spec/features/**/*
+
+RSpec/MultipleExpectations:
+  Exclude:
+    - spec/features/**/*
+
+RSpec/ExampleLength:
+  Exclude:
+    - spec/features/**/*
+
+Layout/EmptyLinesAroundAttributeAccessor:
+  Enabled: true
+
+Layout/SpaceAroundMethodCallOperator:
+  Enabled: true
+
+Lint/DeprecatedOpenSSLConstant:
+  Enabled: true
+
+Lint/MixedRegexpCaptureTypes:
+  Enabled: true
+
+Lint/RaiseException:
+  Enabled: true
+
+Lint/StructNewOverride:
+  Enabled: true
+
+Style/ExponentialNotation:
+  Enabled: true
+
+Style/HashEachMethods:
+  Enabled: true
+
+Style/HashTransformKeys:
+  Enabled: true
+
+Style/HashTransformValues:
+  Enabled: true
+
+Style/RedundantFetchBlock:
+  Enabled: true
+
+Style/RedundantRegexpCharacterClass:
+  Enabled: true
+
+Style/RedundantRegexpEscape:
+  Enabled: true
+
+Style/SlicingWithRange:
+  Enabled: true
+
+Lint/DuplicateElsifCondition:
+  Enabled: true
+
+Style/AccessorGrouping:
+  Enabled: true
+
+Style/ArrayCoercion:
+  Enabled: true
+
+Style/BisectedAttrAccessor:
+  Enabled: true
+
+Style/CaseLikeIf:
+  Enabled: true
+
+Style/HashAsLastArrayItem:
+  Enabled: true
+
+Style/HashLikeCase:
+  Enabled: true
+
+Style/RedundantAssignment:
+  Enabled: true
+
+Style/RedundantFileExtensionInRequire:
+  Enabled: true
