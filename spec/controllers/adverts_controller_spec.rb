@@ -1,8 +1,21 @@
 # frozen_string_literal: true
 
 describe AdvertsController do
-  describe 'POST create' do
+  describe 'GET show' do
+    let(:advert) { create :advert }
 
+    before do
+      get :show, params: { id: advert.id }
+    end
+
+    it { is_expected.to respond_with :success }
+
+    it 'serializes returned object using proper serializer and root key' do
+      expect(parsed_body_of_response).to serialize_object(advert).with(AdvertSerializer).using_root_key(:advert)
+    end
+  end
+
+  describe 'POST create' do
     let(:advert_attributes) { attributes_for :advert }
     let(:expected_service_attributes) do
       {
@@ -20,7 +33,7 @@ describe AdvertsController do
     end
 
     context 'when service object responds with not persisted invalid object' do
-      let(:service_result) { build(:advert, title: nil).tap { |advert| advert.valid? } }
+      let(:service_result) { build(:advert, title: nil).tap(&:valid?) }
 
       it { is_expected.to respond_with :unprocessable_entity }
 

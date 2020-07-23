@@ -2,7 +2,6 @@
 
 # Adverts Controller provides actions to create, list and show adverts
 class AdvertsController < ApplicationController
-
   def create
     if created_advert.persisted?
       render json: created_advert, status: :created
@@ -10,6 +9,12 @@ class AdvertsController < ApplicationController
       render json: { errors: created_advert.errors }, status: :unprocessable_entity
     end
   end
+
+  def show
+    render json: Advert.find(params[:id])
+  end
+
+  private
 
   def created_advert
     @created_advert ||= CreateAdvert.new(attributes: created_advert_params).call

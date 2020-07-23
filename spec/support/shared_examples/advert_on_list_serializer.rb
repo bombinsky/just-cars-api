@@ -12,8 +12,8 @@ shared_examples 'advert on list serializer' do
     let(:variant) { double }
 
     before do
-      object.picture.variant(resize: "100x100")
-      allow(object.picture).to receive(:variant).with(resize: "100x100").and_return variant
+      object.picture.variant(resize: '100x100')
+      allow(object.picture).to receive(:variant).with(resize: '100x100').and_return variant
       allow(serializer).to receive(:rails_representation_url).and_return 'https://rails_representation_url'
     end
 

@@ -7,6 +7,6 @@ class AdvertOnListSerializer < ActiveModel::Serializer
   attributes :id, :title, :created_at, :thumbnail_url
 
   def thumbnail_url
-    rails_representation_url(object.picture.variant(resize: "100x100"))
+    rails_representation_url(object.picture.variant(resize: '100x100'))
   end
 end

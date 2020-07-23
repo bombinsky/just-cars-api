@@ -5,28 +5,21 @@ AllCops:
   Exclude:
     - db/schema.rb
     - db/migrate/*
+    - config/routes.rb
 
 Metrics/BlockLength:
   Exclude:
     - spec/**/*
+
+RSpec/DescribeClass:
+  Exclude:
+    - spec/requests/*
 
 RSpec/NestedGroups:
   Max: 4
 
 Metrics/ParameterLists:
   Max: 6
-
-RSpec/DescribeClass:
-  Exclude:
-    - spec/features/**/*
-
-RSpec/MultipleExpectations:
-  Exclude:
-    - spec/features/**/*
-
-RSpec/ExampleLength:
-  Exclude:
-    - spec/features/**/*
 
 Layout/EmptyLinesAroundAttributeAccessor:
   Enabled: true
