@@ -13,4 +13,6 @@ describe Advert do
   it { is_expected.to allow_value('123.0').for(:price) }
   it { is_expected.to allow_value('123.10').for(:price) }
   it { is_expected.not_to allow_value('321,10').for(:price) }
+
+  it { is_expected.to validate_presence_of(:picture) }
 end
