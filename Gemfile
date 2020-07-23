@@ -26,6 +26,8 @@ gem 'bootsnap', '>= 1.4.2', require: false
 # gem 'rack-cors'
 # serialization
 gem 'active_model_serializers'
+# Images processing
+gem 'image_processing'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
