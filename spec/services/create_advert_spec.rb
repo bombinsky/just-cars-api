@@ -8,7 +8,7 @@ describe CreateAdvert do
       let(:attributes) { { title: nil } }
 
       shared_examples 'object with invalid attribute' do |attribute_name|
-        it "transmits error message for #{ attribute_name }" do
+        it "transmits error message for #{attribute_name}" do
           expect(service_call.errors[attribute_name]).to be_present
         end
       end
