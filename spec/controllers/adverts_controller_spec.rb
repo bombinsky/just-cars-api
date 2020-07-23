@@ -60,7 +60,8 @@ describe AdvertsController do
       end
 
       it 'serializes returned object using proper serializer and root key' do
-        expect(parsed_body_of_response).to serialize_object(service_result).with(AdvertSerializer).using_root_key(:advert)
+        expect(parsed_body_of_response).to serialize_object(service_result)
+          .with(AdvertSerializer).using_root_key(:advert)
       end
     end
   end

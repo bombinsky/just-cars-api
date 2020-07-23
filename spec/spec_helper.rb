@@ -20,6 +20,7 @@ if ENV['COVERAGE']
   coverage_dir = File.join '.', 'tmp', 'reports', 'coverage'
   FileUtils.mkdir_p(coverage_dir) unless File.directory?(coverage_dir)
   SimpleCov.coverage_dir(coverage_dir)
+  SimpleCov.start 'rails'
 end
 
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
