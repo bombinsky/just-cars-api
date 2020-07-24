@@ -32,6 +32,8 @@ gem 'draper'
 gem 'image_processing'
 # Searchkick
 gem 'searchkick'
+# JWT token for user authentication
+gem 'jwt'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

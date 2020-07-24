@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 describe AdvertsController do
+  include UserAuthenticationHelper
+
   describe 'GET show' do
     let(:advert) { create :advert }
 
@@ -56,6 +58,7 @@ describe AdvertsController do
   end
 
   describe 'POST create' do
+    let(:user) { create :user }
     let(:advert_attributes) { attributes_for :advert }
     let(:expected_service_attributes) do
       {
@@ -67,6 +70,7 @@ describe AdvertsController do
     end
 
     before do
+      authenticate(user)
       allow_service_call(CreateAdvert, to_return: service_result)
 
       post :create, params: { advert: advert_attributes }
