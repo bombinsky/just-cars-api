@@ -13,4 +13,15 @@ class Advert < ApplicationRecord
   validates :picture, presence: true
 
   has_one_attached :picture
+
+  searchkick
+
+  def search_data
+    {
+      title: title,
+      description: description,
+      price: price,
+      created_at: created_at
+    }
+  end
 end

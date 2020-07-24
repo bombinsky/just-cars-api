@@ -14,10 +14,22 @@ class AdvertsController < ApplicationController
     render json: Advert.find(params[:id])
   end
 
+  def index
+    if adverts_filter.valid?
+      render json: FilterAdverts.new(adverts_filter).call, each_serializer: AdvertOnListSerializer, root: 'adverts'
+    else
+      render json: { errors: adverts_filter.errors }, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def created_advert
     @created_advert ||= CreateAdvert.new(attributes: created_advert_params).call
+  end
+
+  def adverts_filter
+    @adverts_filter ||= AdvertsFilter.new(params.permit(AdvertsFilter::ATTRIBUTES))
   end
 
   def created_advert_params
