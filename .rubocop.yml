@@ -7,6 +7,10 @@ AllCops:
     - db/migrate/*
     - config/routes.rb
 
+Style/SafeNavigation:
+  Exclude:
+    - app/decorators/adverts_filter_decorator.rb
+
 Style/MixinUsage:
   Exclude:
     - db/seeds.rb

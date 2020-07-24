@@ -6,8 +6,8 @@ class AdvertsFilter
   include ActiveModel::Validations
   include ActiveModel::Serialization
 
-  ALLOWED_ORDERS = %w[created_at_desc created_at_asc price_desc price_asc title_asc title_desc _score_desc]
-  ATTRIBUTES = %i[page per_page min_price max_price min_created_at max_created_at phrase order]
+  ALLOWED_ORDERS = %w[created_at_desc created_at_asc price_desc price_asc title_asc title_desc _score_desc].freeze
+  ATTRIBUTES = %i[page per_page min_price max_price min_created_at max_created_at phrase order].freeze
 
   attr_accessor(*ATTRIBUTES)
 

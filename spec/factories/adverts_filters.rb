@@ -9,6 +9,6 @@ FactoryBot.define do
     min_created_at { '2020-01-01' }
     max_created_at { '2020-08-01' }
     phrase { 'audi' }
-    order { 'created_ad_desc' }
+    order { 'created_at_desc' }
   end
 end

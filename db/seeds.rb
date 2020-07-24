@@ -21,4 +21,4 @@ end
 
 puts "\nReindexing elasticsearch index that will be faster"
 Advert.reindex
-puts "\nDone\n"
+puts "\nDone\n\n"

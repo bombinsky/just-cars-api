@@ -3,7 +3,15 @@
 # Class represents decorator for adverts filter
 # it is responsible for deliver proper types to filtering logic
 class AdvertsFilterDecorator < Draper::Decorator
-  delegate :page, :per_page, :phrase, :order
+  delegate :phrase, :order
+
+  def page
+    object.page.to_i if object.page
+  end
+
+  def per_page
+    object.per_page.to_i if object.per_page
+  end
 
   def max_price
     object.max_price.to_d if object.max_price
