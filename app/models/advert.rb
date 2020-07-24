@@ -4,6 +4,8 @@
 class Advert < ApplicationRecord
   PRICE_FORMAT = /\A\d+(?:\.\d{0,2})?\z/.freeze
 
+  belongs_to :user
+
   validates :title, presence: true, length: { maximum: 255 }
   validates :description, presence: true, length: { minimum: 64 }
   validates :price, presence: true,

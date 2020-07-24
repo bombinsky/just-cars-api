@@ -2,7 +2,8 @@
 
 # Service object responsible for advert creation
 class CreateAdvert
-  def initialize(attributes:)
+  def initialize(user:, attributes:)
+    @user = user
     @attributes = attributes
   end
 
@@ -14,9 +15,9 @@ class CreateAdvert
 
   private
 
-  attr_reader :attributes
+  attr_reader :user, :attributes
 
   def advert
-    @advert ||= Advert.new(attributes)
+    @advert ||= Advert.new(attributes.merge(user: user))
   end
 end

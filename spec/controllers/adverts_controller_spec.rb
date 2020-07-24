@@ -82,7 +82,8 @@ describe AdvertsController do
       it_behaves_like 'unsuccessful response', :unprocessable_entity, 'title'
 
       it 'calls service object with proper params' do
-        expect(CreateAdvert).to have_received(:new).with(attributes: hash_including(expected_service_attributes))
+        expect(CreateAdvert).to have_received(:new)
+          .with(user: user, attributes: hash_including(expected_service_attributes))
       end
     end
 

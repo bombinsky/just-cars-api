@@ -5,7 +5,7 @@ module UserAuthenticationHelper
 
   included do
     before do
-      stub_const('ENV', 'JWT_PUBLIC_KEY' => rsa_public_key )
+      stub_const('ENV', 'JWT_PUBLIC_KEY' => rsa_public_key)
     end
   end
 
