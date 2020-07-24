@@ -4,9 +4,9 @@
 class AdvertOnListSerializer < ActiveModel::Serializer
   include Rails.application.routes.url_helpers
 
-  attributes :id, :title, :created_at, :thumbnail_url
+  attributes :id, :title, :created_at, :price, :picture_url
 
-  def thumbnail_url
-    rails_representation_url(object.picture.variant(resize: '100x100'))
+  def picture_url
+    rails_blob_url(object.picture)
   end
 end
