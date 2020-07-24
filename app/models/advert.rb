@@ -23,7 +23,8 @@ class Advert < ApplicationRecord
       title: title,
       description: description,
       price: price,
-      created_at: created_at
+      created_at: created_at,
+      user_nickname: user.nickname
     }
   end
 end
