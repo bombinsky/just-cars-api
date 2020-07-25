@@ -3,12 +3,6 @@
 module UserAuthenticationHelper
   extend ActiveSupport::Concern
 
-  included do
-    before do
-      stub_const('ENV', 'JWT_PUBLIC_KEY' => rsa_public_key)
-    end
-  end
-
   def token_auth_headers(user)
     { 'X-ID-Token' => id_token(user) }
   end
@@ -23,23 +17,11 @@ module UserAuthenticationHelper
 
   private
 
-  def rsa_private
-    @rsa_private ||= OpenSSL::PKey::RSA.generate 2048
-  end
-
-  def rsa_public
-    @rsa_public ||= rsa_private.public_key
-  end
-
-  def rsa_public_key
-    @rsa_public_key ||= rsa_public.to_s
-  end
-
   def encode(payload)
-    JWT.encode payload.merge(shared), rsa_private, DecodeToken::ALGORITHM
+    JWT.encode(payload.merge(expiration_stamp), Rails.application.credentials.hmac_secret, DecodeToken::ALGORITHM)
   end
 
-  def shared
+  def expiration_stamp
     { iat: Time.now.to_i, exp: (Time.now + 10.seconds).to_i }
   end
 end

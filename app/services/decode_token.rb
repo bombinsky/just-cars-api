@@ -2,10 +2,10 @@
 
 # Service responsible for tokens decoding
 class DecodeToken
-  ALGORITHM = 'RS256'
+  ALGORITHM = 'HS256'
 
   def initialize(id_token)
-    @id_token = decoded(id_token)
+    @id_token = HashWithIndifferentAccess.new(decoded(id_token))
   end
 
   def call
@@ -17,10 +17,6 @@ class DecodeToken
   attr_reader :id_token
 
   def decoded(token)
-    HashWithIndifferentAccess.new(JWT.decode(token, public_key, true, algorithm: ALGORITHM).first)
-  end
-
-  def public_key
-    OpenSSL::PKey::RSA.new(ENV['JWT_PUBLIC_KEY'])
+    JWT.decode(token, Rails.application.credentials.hmac_secret, true, { algorithm: ALGORITHM }).first
   end
 end

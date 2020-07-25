@@ -33,3 +33,4 @@
 # Ignore files with secrets
 config/database.yml
 config/credentials/*.key
+/config/credentials/test.key
