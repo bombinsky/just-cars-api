@@ -5,7 +5,7 @@ To see the details of endpoints please use Postman collection located in:
 
 ```docs/Just-Cars-API.postman_collection.json```
  
-There is X-ID-Token required in action create please generate one and replace in existing collection.  
+There is X-ID-Token required in action create please generate one and replace in existing collection before the request.  
 
 ### Filtering of adverts is available with following parameters.
 
@@ -15,9 +15,9 @@ There is X-ID-Token required in action create please generate one and replace in
  
 3. **max_price** : string but in decimal amount format
 
-4. **min_created_at** : string but in date format YYYY-DD-MM
+4. **min_created_at** : string but in date format YYYY-MM-DD
 
-5. **max_created_at** : string but in date format YYYY-DD-MM
+5. **max_created_at** : string but in date format YYYY-MM-DD
  
 6. **page** : integer grater than 0
 

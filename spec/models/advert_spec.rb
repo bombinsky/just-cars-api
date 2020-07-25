@@ -17,4 +17,7 @@ describe Advert do
   it { is_expected.not_to allow_value('321,10').for(:price) }
 
   it { is_expected.to validate_presence_of(:picture) }
+
+  it { is_expected.to validate_content_type_of(:picture).allowing('image/png', 'image/jpeg', 'image/gif') }
+  it { is_expected.to validate_content_type_of(:picture).rejecting('application/pdf') }
 end

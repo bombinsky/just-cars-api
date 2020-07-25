@@ -12,7 +12,7 @@ class Advert < ApplicationRecord
                     numericality: { greater_than: 0, less_than: 10_000_000 },
                     format: { with: PRICE_FORMAT }
 
-  validates :picture, presence: true
+  validates :picture, attached: true, content_type: ['image/png', 'image/jpeg', 'image/gif']
 
   has_one_attached :picture
 

@@ -34,6 +34,8 @@ gem 'image_processing'
 gem 'searchkick'
 # JWT token for user authentication
 gem 'jwt'
+# active storage/attachments validation
+gem 'active_storage_validations'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
