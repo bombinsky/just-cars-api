@@ -49,6 +49,10 @@ With all services up load seeds but only once.
 
 ``` docker-compose run --rm web rake db:seed ```
 
+Reindex advert in case of any problems can be done with.
+
+``` docker-compose run --rm web rake reindex:adverts ```
+
 And finally take one hour valid user token to use it in POST adverts request.
 
 ``` docker-compose run --rm web rake generate_token:for_existing_user[email-1@no-domain.com] ```

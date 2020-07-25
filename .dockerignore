@@ -13,6 +13,5 @@ Dockerfile
 !.rubocop.yml
 nbproject
 config/database.yml
-storage/
 tmp/
 log/*.log
