@@ -1,0 +1,17 @@
+version: "3.7"
+services:
+  db:
+    environment:
+      POSTGRES_PASSWORD: password      
+      POSTGRES_DB: just_cars_api_development
+      
+  es:
+    ports:
+      - 9200
+    environment:
+      - discovery.type=single-node
+
+  web:
+    environment:
+      DATABASE_URL: postgres://postgres:password@db:5432/just_cars_api_development
+      ELASTICSEARCH_URL: es:9200

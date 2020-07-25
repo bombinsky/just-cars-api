@@ -6,9 +6,55 @@ To see the details of endpoints please use Postman collection located in:
 ```docs/Just-Cars-API.postman_collection.json```
  
 There is X-ID-Token required in action create please generate one and replace in existing collection.  
- 
 
-## Prerequisites information for none docker users
+### Filtering of adverts is available with following parameters.
+
+1. **phrase** : string - at last three chars will be searched in title, description and user.nickname
+
+2. **min_price** : string but in decimal amount format
+ 
+3. **max_price** : string but in decimal amount format
+
+4. **min_created_at** : string but in date format YYYY-DD-MM
+
+5. **max_created_at** : string but in date format YYYY-DD-MM
+ 
+6. **page** : integer grater than 0
+
+7. **per_page** : integer grater than 0
+
+8. **order** : one value among the set of available sorts 
+    
+    - _score_desc (default) 
+    - created_at_desc 
+    - created_at_asc 
+    - price_desc 
+    - price_asc 
+    - title_asc 
+    - title_desc 
+
+ 
+### Application setup for docker users
+To run application in docker first copy override-example then simply build services and up them. 
+
+Be patient. Web will wait for elastic search for significant time on up.
+
+```
+cp docker-compose.override-example.yml docker-compose.override.yml
+docker-compose build
+docker-compose up
+```
+
+With all services up load seeds but only once. 
+
+``` docker-compose run --rm web rake db:seed ```
+
+And finally take one hour valid user token to use it in POST adverts request.
+
+``` docker-compose run --rm web rake generate_token:for_existing_user[email-1@no-domain.com] ```
+
+
+### Prerequisites - information for none docker users
 
 PostgreSQL  
 
@@ -66,8 +112,9 @@ hmac_secret: (salt for JWT)
 
 ## Other commands useful during development
 
-1. Run specs
+1. Run  specs. This requires elastic search service so first it should be run depends on your development environment.   
 
+    ``` brew services start elasticsearch ```
     ``` rspec ```
 
 2. Run specs with code coverage

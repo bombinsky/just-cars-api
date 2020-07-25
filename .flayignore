@@ -1,0 +1,3 @@
+**/db/**/*
+**/bin/**/*
+**/spec/services/filter_adverts_spec.rb
