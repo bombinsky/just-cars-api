@@ -2,7 +2,9 @@
 
 describe CreateAdvert do
   describe '#call' do
-    subject(:service_call) { described_class.new(attributes: attributes).call }
+    subject(:service_call) { described_class.new(user: user, attributes: attributes).call }
+
+    let(:user) { create :user }
 
     context 'with invalid attributes' do
       let(:attributes) { { title: nil } }
@@ -32,6 +34,10 @@ describe CreateAdvert do
 
       it 'adds one advert to the system' do
         expect { service_call }.to change(Advert, :count).by 1
+      end
+
+      it 'saves user association' do
+        expect(service_call.user).to eq user
       end
 
       it 'saves title provided among attributes' do

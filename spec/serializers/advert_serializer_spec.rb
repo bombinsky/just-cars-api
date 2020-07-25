@@ -9,4 +9,5 @@ describe AdvertSerializer do
 
   it { is_expected.to have_attribute :description }
   it { is_expected.to have_attribute :updated_at }
+  it { is_expected.to have_association :user }
 end

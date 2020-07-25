@@ -8,7 +8,7 @@ describe FilterAdverts do
     let(:filtered_adverts) { build_list :advert, 3 }
 
     let(:expected_phrase) { '*' }
-    let(:expected_conditions) {{}}
+    let(:expected_conditions) { {} }
     let(:expected_page) { 1 }
     let(:expected_per_page) { 20 }
     let(:expected_order_hash) { { _score: :desc } }
@@ -16,11 +16,13 @@ describe FilterAdverts do
     let(:expected_search_params) do
       [
         expected_phrase,
-        where: expected_conditions,
-        page: expected_page,
-        per_page: expected_per_page,
-        order: expected_order_hash,
-        includes: expected_includes
+        {
+          where: expected_conditions,
+          page: expected_page,
+          per_page: expected_per_page,
+          order: expected_order_hash,
+          includes: expected_includes
+        }
       ]
     end
 

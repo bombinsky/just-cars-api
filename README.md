@@ -1,18 +1,67 @@
-Just Car API 
+# Just Cars API
 
-## Simple running instruction until docker files will be ready
+This is a set of API endpoints which allows to add, list and show adverts.
+To see the details of endpoints please use Postman collection located in: 
 
-1. Set all required environmental variables the way you prefer. For example you can copy then edit .env using .env.example
+```docs/Just-Cars-API.postman_collection.json```
+ 
+There is X-ID-Token required in action create please generate one and replace in existing collection.  
+ 
 
-    ``` cp .env.example .env ```
+## Prerequisites information for none docker users
+
+PostgreSQL  
+
+```
+brew install postgresql
+pg_ctl -D /usr/local/var/postgres start
+
+```
+
+Elasticsearch
+
+```
+brew install elasticsearch
+brew services start elasticsearch
+
+```
+
+Required environmental variables
+
+```
+DATABASE_URL (required by postgres non docker users can also use config/database.yml)  
+ELASTICSEARCH_URL (required by elastisearch localhost:9200 is by default)
+```
+
+Secrets used by application
+
+```
+secret_key_base: (rails application secret)   
+hmac_secret: (salt for JWT)
+```
+
+## Simple running instruction for none docker users.
+
+1. Set all required secrets for specific environment.    
+
+    ``` EDITOR=yours_favorit_editor_here rails credentials:edit --environment=development ```
 
 2. Setup connection for postgres. You can copy then edit config/database.yml using config/database.yml.example
 
    ``` cp config/database.yml.example cp config/database.yml ```
 
-3. Run application server
+3. Setup database with seeds
+
+    ``` rake db:setup```
+
+4. Run application server
 
     ``` rails s```
+
+5. Generate token required by action create for any user identified by email-{n}@no-domain.com.
+   It will be valid for one hour and the value is expected in request header X-ID-Token .
+
+    ``` rake generate_token:for_existing_user[email-1@no-domain.com] ```    
 
 
 ## Other commands useful during development
@@ -32,7 +81,7 @@ Just Car API
 
 4. Check new code with cops during development
 
-    ``` pronto run -r=flay rails_best_practices reek rubocop brakeman -c origin/develop ```
+    ``` pronto run -r=flay rails_best_practices reek rubocop brakeman -c origin/master ```
 
 5. Run pronto with cops on whole code like
 

@@ -1,0 +1,240 @@
+{
+	"info": {
+		"_postman_id": "9a402120-6685-4d84-9819-874540cbaeae",
+		"name": "Just-Cars-API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Advert",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "advert[picture]",
+							"type": "file",
+							"src": "/Users/bombinsky/Downloads/p2.jpg"
+						},
+						{
+							"key": "advert[title]",
+							"value": "Title",
+							"type": "text"
+						},
+						{
+							"key": "advert[description]",
+							"value": "Some interesting description of the offer. Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum  ",
+							"type": "text"
+						},
+						{
+							"key": "advert[price]",
+							"value": "135",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/adverts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"adverts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Show Advert",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "advert[picture]",
+							"type": "file",
+							"src": "/Users/bombinsky/Downloads/ruby.jpg"
+						},
+						{
+							"key": "advert[title]",
+							"value": "Title",
+							"type": "text"
+						},
+						{
+							"key": "advert[description]",
+							"value": "Some interesting description of the offer. Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum  ",
+							"type": "text"
+						},
+						{
+							"key": "advert[price]",
+							"value": "135",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/adverts/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"adverts",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Adverts",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/adverts/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"adverts",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Filter adverts",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/adverts?phrase=blue Chevy",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"adverts"
+					],
+					"query": [
+						{
+							"key": "phrase",
+							"value": "blue Chevy"
+						},
+						{
+							"key": "min_price",
+							"value": "765540",
+							"disabled": true
+						},
+						{
+							"key": "max_price",
+							"value": "765541",
+							"disabled": true
+						},
+						{
+							"key": "min_created_at",
+							"value": "2019-11-22",
+							"disabled": true
+						},
+						{
+							"key": "max_created_at",
+							"value": "2019-11-23",
+							"disabled": true
+						},
+						{
+							"key": "page",
+							"value": "2",
+							"disabled": true
+						},
+						{
+							"key": "per_page",
+							"value": "50",
+							"disabled": true
+						},
+						{
+							"key": "order",
+							"value": "_score_desc",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

@@ -3,24 +3,24 @@
 # Service object responsible for adverts filtering
 class FilterAdverts
   def initialize(filter)
-    @decorated_filter = AdvertsFilterDecorator.new(filter)
+    @filter = AdvertsFilterDecorator.new(filter)
   end
 
   def call
-    Advert.search(search_phrase, where: conditions, page: page, per_page: per_page, order: order_hash, includes: includes)
+    Advert.search(expression, where: conditions, page: page, per_page: per_page, order: order_hash, includes: includes)
   end
 
   private
 
-  delegate :phrase, :min_price, :max_price, :min_created_at, :max_created_at, :page, :per_page, :order, to: :decorated_filter
+  delegate :phrase, :min_price, :max_price, :min_created_at, :max_created_at, :page, :per_page, :order, to: :filter
 
-  attr_reader :decorated_filter
+  attr_reader :filter
 
   def includes
     { picture_attachment: :blob }
   end
 
-  def search_phrase
+  def expression
     phrase || '*'
   end
 

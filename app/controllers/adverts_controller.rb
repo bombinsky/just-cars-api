@@ -2,6 +2,10 @@
 
 # Adverts Controller provides actions to create, list and show adverts
 class AdvertsController < ApplicationController
+  include UserAuthorizationMethods
+
+  before_action :authenticate_user!, only: :create
+
   def create
     if created_advert.persisted?
       render json: created_advert, status: :created
@@ -25,7 +29,7 @@ class AdvertsController < ApplicationController
   private
 
   def created_advert
-    @created_advert ||= CreateAdvert.new(attributes: created_advert_params).call
+    @created_advert ||= CreateAdvert.new(user: current_user, attributes: created_advert_params).call
   end
 
   def adverts_filter
