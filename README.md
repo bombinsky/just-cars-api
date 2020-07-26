@@ -5,7 +5,7 @@ To see the details of endpoints please use Postman collection located in:
 
 ```docs/Just-Cars-API.postman_collection.json```
  
-There is Authorization token required for whole API and X-ID-Token required in action create.
+There is **Authorization** token required for whole API and **X-ID-Token** required in action create.
 Please generate them and replace in existing collection before the requests with following rake tasks.
 ```
   rake generate:authorization_token
@@ -57,7 +57,7 @@ Reindex advert in case of any problems can be done with.
 
 ``` docker-compose run --rm web rake reindex:adverts ```
 
-And finally take one hour valid authorization and authentication token for all requests and authentication token  to use it in crate advert request.
+And finally take one hour valid authorization token for all requests and authentication token to use it in create advert request.
 
 ```
 docker-compose run --rm web rake generate:authorization_token
@@ -114,8 +114,8 @@ hmac_secret: (salt for JWT)
 
     ``` rails s```
 
-5. Generate authorization token required all requests and authentication token for action create.
-   It will be valid for one hour and the value is expected in request header X-ID-Token .
+5. Generate authorization token required in all requests and authentication token required by action create.
+   It will be valid for one hour and the value is expected in following headers **Authorization** and **X-ID-Token**.
 
 ```
 rake generate:authorization_token
