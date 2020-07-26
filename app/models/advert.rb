@@ -3,6 +3,7 @@
 # Class represents advert
 class Advert < ApplicationRecord
   PRICE_FORMAT = /\A\d+(?:\.\d{0,2})?\z/.freeze
+  ELASTIC_SEARCH_MAPPINGS = { properties: { price: { type: 'double' }, created_at: { type: 'date' } } }.freeze
 
   belongs_to :user
 
@@ -16,7 +17,7 @@ class Advert < ApplicationRecord
 
   has_one_attached :picture
 
-  searchkick
+  searchkick merge_mappings: true, mappings: ELASTIC_SEARCH_MAPPINGS
 
   def search_data
     {
