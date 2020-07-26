@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-# Service responsible for tokens decoding
-class DecodeToken
+# Service responsible for decoding X-ID-Token to particular User object
+class DecodeAuthenticationToken
   ALGORITHM = 'HS256'
 
   def initialize(id_token)

@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-describe DecodeToken do
-  include UserAuthenticationHelper
+describe DecodeAuthenticationToken do
+  include AuhorizationAndAuthenticationHelper
 
   describe '#call' do
-    subject(:service_call) { described_class.new(id_token(user)).call }
+    subject(:service_call) { described_class.new(authentication_token(user)).call }
 
     context 'when user already exists' do
       let(:user) { create :user }

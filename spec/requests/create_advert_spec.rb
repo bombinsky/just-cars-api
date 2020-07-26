@@ -3,8 +3,9 @@
 describe 'Create advert' do
   let(:user) { create :user }
   let(:advert_attributes) { attributes_for(:advert) }
+  let(:headers) { authorization_header.merge authentication_header(user) }
 
-  before { post adverts_path, params: { advert: advert_attributes }, headers: token_auth_headers(user) }
+  before { post adverts_path, params: { advert: advert_attributes }, headers: headers }
 
   it 'responds with created advert' do
     expect(response.code).to eq '201'

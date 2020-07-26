@@ -74,6 +74,6 @@ RSpec.configure do |config|
   config.include ActiveStorageValidations::Matchers
   config.include ParsedBodyOfResponseHelper, type: :controller
   config.include ParsedBodyOfResponseHelper, type: :request
-  config.include UserAuthenticationHelper, type: :controller
-  config.include UserAuthenticationHelper, type: :request
+  config.include AuhorizationAndAuthenticationHelper, type: :controller
+  config.include AuhorizationAndAuthenticationHelper, type: :request
 end

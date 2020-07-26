@@ -8,7 +8,7 @@ describe 'Filter adverts' do
 
     Advert.reindex
 
-    get '/adverts/?phrase=new%20advert', as: :json
+    get '/adverts/?phrase=new%20advert', headers: authorization_header, as: :json
   end
 
   it 'responds with success' do
