@@ -2,7 +2,6 @@
 
 # Concern module to handle possible exceptions
 module ExceptionsHandling
-  class Unauthorized < StandardError; end
   extend ActiveSupport::Concern
 
   included do

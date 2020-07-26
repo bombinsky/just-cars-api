@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 describe AdvertsController do
-  include UserAuthenticationHelper
-
   describe 'GET show' do
     let(:advert) { create :advert }
 

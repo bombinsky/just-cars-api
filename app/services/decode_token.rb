@@ -9,12 +9,20 @@ class DecodeToken
   end
 
   def call
-    User.find_by(email: id_token[:email]) || User.create!(email: id_token[:email], nickname: id_token[:nickname])
+    User.find_by(email: email) || User.create!(email: email, nickname: nickname)
   end
 
   private
 
   attr_reader :id_token
+
+  def email
+    id_token[:email]
+  end
+
+  def nickname
+    id_token[:nickname]
+  end
 
   def decoded(token)
     JWT.decode(token, Rails.application.credentials.hmac_secret, true, { algorithm: ALGORITHM }).first
