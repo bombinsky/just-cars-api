@@ -2,6 +2,7 @@
 
 # Class represents advert
 class Advert < ApplicationRecord
+  THUMBNAIL_SIZES = '150x150'
   PRICE_FORMAT = /\A\d+(?:\.\d{0,2})?\z/.freeze
   ELASTIC_SEARCH_MAPPINGS = { properties: { price: { type: 'double' }, created_at: { type: 'date' } } }.freeze
 

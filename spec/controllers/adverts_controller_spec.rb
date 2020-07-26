@@ -38,6 +38,8 @@ describe AdvertsController do
 
     context 'when request is authorized' do
       context 'with valid filtering params' do
+        let(:adverts) { create_list :advert, 3 }
+
         before do
           authorize_request
 

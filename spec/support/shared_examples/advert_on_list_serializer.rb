@@ -5,19 +5,26 @@ shared_examples 'advert on list serializer' do
   it { is_expected.to have_attribute :title }
   it { is_expected.to have_attribute :created_at }
   it { is_expected.to have_attribute :price }
-  it { is_expected.to have_attribute :picture_url }
+  it { is_expected.to have_attribute :thumbnail_url }
 
-  describe '#picture_url' do
-    subject(:picture_url) { serializer.picture_url }
+  describe '#thumbnail_url' do
+    subject(:thumbnail_url) { serializer.thumbnail_url }
 
-    before { allow(serializer).to receive(:rails_blob_url).and_return 'https://rails_blob_path' }
+    let(:variant) { instance_double ActiveStorage::Variant }
+    let(:processed_variant) { instance_double ActiveStorage::Variant }
 
-    it { is_expected.to eq 'https://rails_blob_path' }
+    before do
+      allow(variant).to receive(:processed).and_return(processed_variant)
+      allow(object.picture).to receive(:variant).with(resize: Advert::THUMBNAIL_SIZES).and_return variant
+      allow(serializer).to receive(:rails_representation_url).and_return 'https://rails_representation_url'
+    end
 
-    it 'uses rails_blob_path method' do
-      picture_url
+    it { is_expected.to eq 'https://rails_representation_url' }
 
-      expect(serializer).to have_received(:rails_blob_url).with(object.picture)
+    it 'uses rails_representation_url method' do
+      thumbnail_url
+
+      expect(serializer).to have_received(:rails_representation_url).with(processed_variant)
     end
   end
 end
