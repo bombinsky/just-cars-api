@@ -6,7 +6,7 @@ describe 'List adverts' do
 
     Advert.reindex
 
-    get adverts_path, as: :json
+    get adverts_path, headers: authorization_header, as: :json
   end
 
   it 'responds with success' do
