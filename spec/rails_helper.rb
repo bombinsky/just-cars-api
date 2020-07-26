@@ -32,10 +32,6 @@ Shoulda::Matchers.configure do |config|
   end
 end
 
-FactoryBot::SyntaxRunner.class_eval do
-  include ActionDispatch::TestProcess
-end
-
 # Checks for pending migrations and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove these lines.
 begin
@@ -78,4 +74,6 @@ RSpec.configure do |config|
   config.include ActiveStorageValidations::Matchers
   config.include ParsedBodyOfResponseHelper, type: :controller
   config.include ParsedBodyOfResponseHelper, type: :request
+  config.include UserAuthenticationHelper, type: :controller
+  config.include UserAuthenticationHelper, type: :request
 end

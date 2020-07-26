@@ -18,4 +18,8 @@ describe 'Filter adverts' do
   it 'responds with matching adverts' do
     expect(parsed_body_of_response['adverts'].size).to eq 2
   end
+
+  it 'responds with content type application/json; charset=utf-8' do
+    expect(response.content_type).to eq 'application/json; charset=utf-8'
+  end
 end

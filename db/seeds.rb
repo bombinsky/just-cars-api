@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-include ActionDispatch::TestProcess
-
 (1..30).step do |number|
   email = "email-#{number}@no-domain.com"
   User.find_by(email: email) || User.create!(email: email, nickname: Faker::Internet.username)

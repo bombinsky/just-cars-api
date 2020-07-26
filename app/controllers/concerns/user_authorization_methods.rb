@@ -6,6 +6,10 @@ module UserAuthorizationMethods
 
   included { self._serialization_scope = nil }
 
+  private
+
+  delegate :headers, to: :request
+
   def authenticate_user!
     current_user
   end
@@ -15,6 +19,6 @@ module UserAuthorizationMethods
   end
 
   def token_from_header(header_name)
-    request.headers[header_name].split(' ').last if request.headers[header_name].present?
+    headers[header_name].split(' ').last if headers[header_name].present?
   end
 end

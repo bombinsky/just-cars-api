@@ -16,4 +16,8 @@ describe 'List adverts' do
   it 'responds with all adverts' do
     expect(parsed_body_of_response['adverts'].size).to eq Advert.count
   end
+
+  it 'responds with content type application/json; charset=utf-8' do
+    expect(response.content_type).to eq 'application/json; charset=utf-8'
+  end
 end

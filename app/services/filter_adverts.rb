@@ -28,7 +28,7 @@ class FilterAdverts
     {
       price: { gte: min_price, lte: max_price }.compact,
       created_at: { gte: min_created_at, lte: max_created_at }.compact
-    }.delete_if { |_, v| v.blank? }
+    }.delete_if { |_, value| value.blank? }
   end
 
   def order_hash
