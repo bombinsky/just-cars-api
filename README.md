@@ -11,7 +11,7 @@ Please generate them and replace in existing collection before the requests with
   rake generate:authorization_token
   rake generate:authentication_token[email-1@no-domain.com]
 ```
-### Filtering of adverts is available with following parameters.
+## Filtering of adverts is available with following parameters.
 
 1. **phrase** : string - at last three chars will be searched in title, description and user.nickname
 
@@ -38,7 +38,7 @@ Please generate them and replace in existing collection before the requests with
     - title_desc 
 
  
-### Application setup for docker users
+## Application setup for docker users
 To run application in docker first copy override-example then simply build services and up them. 
 
 Be patient. Web will wait for elastic search for significant time on up.
@@ -53,7 +53,7 @@ With all services up load seeds but only once.
 
 ``` docker-compose run --rm web rake db:seed ```
 
-Reindex advert in case of any problems can be done with.
+Reindexing of adverts in case of any problems can be done with.
 
 ``` docker-compose run --rm web rake reindex:adverts ```
 
@@ -64,7 +64,7 @@ docker-compose run --rm web rake generate:authorization_token
 docker-compose run --rm web rake generate:authentication_token[email-1@no-domain.com]
 ```
 
-### Prerequisites - information for none docker users
+## Prerequisites - information for none docker users
 
 PostgreSQL  
 
