@@ -39,6 +39,15 @@ Please generate them and replace in existing collection before the requests with
 
  
 ## Application setup for docker users
+First set all required secrets for specific environment.
+```
+EDITOR=yours_favorit_editor_here rails credentials:edit --environment=development
+
+
+secret_key_base: (provide rails application secret)
+hmac_secret: (provide salt for JWT)
+```
+
 To run application in docker first copy override-example then simply build services and up them. 
 
 Be patient. Web will wait for elastic search for significant time on up.
